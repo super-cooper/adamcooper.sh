@@ -60,7 +60,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("sh.adamcooper.ServerKt")
+    mainClass.set("sh.adamcooper.MainKt")
 }
 
 tasks.named<Copy>("javaProcessResources") {
