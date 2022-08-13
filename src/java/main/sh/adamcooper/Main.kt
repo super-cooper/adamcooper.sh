@@ -22,9 +22,9 @@ fun main() {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::index)
             }
             static("/static") {
-                this.staticRootFolder = File("src/java/main/resources")
-                this.files(".")
-                this.resources()
+                static {
+                    resources("img")
+                }
             }
         }
     }.start(wait = true)
