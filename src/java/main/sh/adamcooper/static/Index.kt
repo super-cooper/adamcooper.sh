@@ -29,7 +29,7 @@ fun HTML.index() {
         // Top bar of site with links to other pages
         div(classes = "navbar") {
             header {
-                a(href = "/about-me") { +"About Me" }
+                a(href = "/about") { +"About Me" }
                 a(href = "/projects") { +"Projects" }
                 a(href = "/", classes = "selected") { +"Home" }
                 a(href = "/opinions") { +"Opinions" }

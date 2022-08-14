@@ -32,6 +32,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             kotlin.srcDir("src/common/main")
+            resources.srcDir("src/common/main/resources")
         }
         val commonTest by getting {
             kotlin.srcDir("src/common/test")
@@ -41,16 +42,21 @@ kotlin {
         }
         val javaMain by getting {
             kotlin.srcDir("src/java/main")
+            resources.srcDir("src/java/main/resources")
             dependencies {
                 implementation("io.ktor:ktor-server-cio:2.0.1")
                 implementation("io.ktor:ktor-server-html-builder-jvm:2.0.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+
+                implementation("io.ktor:ktor-server-call-logging:2.0.1")
+                implementation("ch.qos.logback:logback-classic:1.3.0-beta0")
             }
         }
         val javaTest by getting {
             kotlin.srcDir("src/java/test")
         }
         val jsMain by getting {
+            resources.srcDir("src/java/main/resources")
             kotlin.srcDir("src/js/main")
         }
         val jsTest by getting {
