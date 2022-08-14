@@ -15,6 +15,7 @@ import io.ktor.server.routing.routing
 import kotlinx.html.HTML
 import sh.adamcooper.static.about
 import sh.adamcooper.static.index
+import sh.adamcooper.static.opinions
 import sh.adamcooper.static.projects
 
 fun main() {
@@ -30,6 +31,9 @@ fun main() {
             }
             get("/projects") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::projects)
+            }
+            get("/opinions") {
+                this.call.respondHtml(HttpStatusCode.OK, HTML::opinions)
             }
             static("/static") {
                 static("img") {
