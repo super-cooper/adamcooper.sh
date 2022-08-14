@@ -15,6 +15,7 @@ import io.ktor.server.routing.routing
 import kotlinx.html.HTML
 import sh.adamcooper.static.about
 import sh.adamcooper.static.index
+import sh.adamcooper.static.projects
 
 fun main() {
     embeddedServer(CIO, port = 8080, host = "127.0.0.1") {
@@ -26,6 +27,9 @@ fun main() {
             }
             get("/about") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::about)
+            }
+            get("/projects") {
+                this.call.respondHtml(HttpStatusCode.OK, HTML::projects)
             }
             static("/static") {
                 static("img") {
