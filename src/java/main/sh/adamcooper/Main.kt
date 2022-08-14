@@ -13,6 +13,7 @@ import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import kotlinx.html.HTML
+import sh.adamcooper.static.about
 import sh.adamcooper.static.index
 
 fun main() {
@@ -22,6 +23,9 @@ fun main() {
             trace { application.log.trace(it.buildText()) }
             get("/") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::index)
+            }
+            get("/about") {
+                this.call.respondHtml(HttpStatusCode.OK, HTML::about)
             }
             static("/static") {
                 static("img") {
