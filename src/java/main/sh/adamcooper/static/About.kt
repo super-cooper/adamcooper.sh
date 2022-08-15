@@ -17,6 +17,7 @@ fun HTML.about() {
     head {
         meta(charset = "UTF-8")
         title("About Me - Adam Cooper")
+        link(rel = "stylesheet", type = "text/css", href = "/static/style.css")
         link(rel = "shortcut icon", href = "/static/img/lambda.png")
         // Fonts
         link(

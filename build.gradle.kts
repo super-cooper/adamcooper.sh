@@ -47,6 +47,7 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:2.0.1")
                 implementation("io.ktor:ktor-server-html-builder-jvm:2.0.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.356")
 
                 implementation("io.ktor:ktor-server-call-logging:2.0.1")
                 implementation("ch.qos.logback:logback-classic:1.3.0-beta0")
