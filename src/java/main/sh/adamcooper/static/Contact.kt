@@ -8,6 +8,7 @@ import kotlinx.html.div
 import kotlinx.html.h3
 import kotlinx.html.head
 import kotlinx.html.header
+import kotlinx.html.id
 import kotlinx.html.img
 import kotlinx.html.link
 import kotlinx.html.meta
@@ -17,6 +18,7 @@ fun HTML.contact() {
     head {
         meta(charset = "UTF-8")
         title("Contact - Adam Cooper")
+        link(rel = "stylesheet", type = "text/css", href = "/static/style.css")
         link(rel = "shortcut icon", href = "/static/img/lambda.png")
         // Fonts
         link(
@@ -65,6 +67,7 @@ fun HTML.contact() {
             }
         }
         img(src = "/static/img/email.jpg") {
+            id = "email"
             alt = "ah dumb at ah dumb kew per dawt ess aytch"
         }
     }

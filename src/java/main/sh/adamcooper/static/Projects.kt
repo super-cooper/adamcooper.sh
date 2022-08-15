@@ -16,6 +16,7 @@ fun HTML.projects() {
     head {
         meta(charset = "UTF-8")
         title("Adam Cooper - Projects")
+        link(rel = "stylesheet", type = "text/css", href = "/static/style.css")
         link(rel = "shortcut icon", href = "/static/img/lambda.png")
         // Fonts
         link(
