@@ -57,13 +57,12 @@ fun HTML.about() {
                 id = "aboutme"
                 // TODO make age generated instead of manually updated
                 +"""
-                    I am Adam Cooper, a $age year old computer programmer from New York. 
-                    I program mostly in C++ and Python. In my free time, I like to work on 
+                    I am Adam Cooper, a $age year old computer programmer from New Jersey. 
+                    I program mostly in Kotlin and Python. In my free time, I like to work on 
                     personal projects (both programming and non-programming, but mostly 
-                    technology-related), play video games (particularly Rocket League!), 
-                    watch/play baseball/softball, make/play music, watch movies, and cook!
-                    Feel free to contact me if you want to talk about any of these things, 
-                    as long as you're not trying to sell me anything ;) 
+                    technology-related), play video games, watch baseball, make/play music, 
+                    watch movies, and cook! Feel free to contact me if you want to talk about any 
+                    of these things, as long as you're not trying to sell me anything ;) 
                 """.trimIndent()
                 br {}
                 br {}
