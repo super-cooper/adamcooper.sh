@@ -2,6 +2,7 @@
 name: misspell
 on:
   - pull_request
+  - push
 
 jobs:
   misspell:
