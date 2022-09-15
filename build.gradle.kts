@@ -1,3 +1,7 @@
+val kotlinVersion: String by project
+val ktorVersion: String by project
+val logbackVersion: String by project
+
 plugins {
     kotlin("multiplatform") version "1.7.10"
     application
@@ -44,13 +48,13 @@ kotlin {
             kotlin.srcDir("src/java/main")
             resources.srcDir("src/java/main/resources")
             dependencies {
-                implementation("io.ktor:ktor-server-cio:2.0.1")
-                implementation("io.ktor:ktor-server-html-builder-jvm:2.0.1")
+                implementation("io.ktor:ktor-server-cio:$ktorVersion")
+                implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.356")
-
-                implementation("io.ktor:ktor-server-call-logging:2.0.1")
-                implementation("ch.qos.logback:logback-classic:1.3.0-beta0")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
+                implementation("ch.qos.logback:logback-classic:$logbackVersion")
             }
         }
         val javaTest by getting {

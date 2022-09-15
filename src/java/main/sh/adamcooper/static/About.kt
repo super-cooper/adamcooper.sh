@@ -1,5 +1,11 @@
 package sh.adamcooper.static
 
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Month
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.periodUntil
+import kotlinx.datetime.toInstant
 import kotlinx.html.HTML
 import kotlinx.html.a
 import kotlinx.html.body
@@ -13,7 +19,16 @@ import kotlinx.html.meta
 import kotlinx.html.p
 import kotlinx.html.title
 
+internal val BIRTHDAY = LocalDateTime(
+    year = 1996,
+    month = Month.OCTOBER,
+    dayOfMonth = 8,
+    hour = 0,
+    minute = 9
+).toInstant(TimeZone.of("-4"))
+
 fun HTML.about() {
+    val age = BIRTHDAY.periodUntil(Clock.System.now(), TimeZone.currentSystemDefault()).years
     head {
         meta(charset = "UTF-8")
         title("About Me - Adam Cooper")
@@ -42,7 +57,7 @@ fun HTML.about() {
                 id = "aboutme"
                 // TODO make age generated instead of manually updated
                 +"""
-                    I am Adam Cooper, a 24 year old computer programmer from New York. 
+                    I am Adam Cooper, a $age year old computer programmer from New York. 
                     I program mostly in C++ and Python. In my free time, I like to work on 
                     personal projects (both programming and non-programming, but mostly 
                     technology-related), play video games (particularly Rocket League!), 
