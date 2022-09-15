@@ -1,0 +1,10 @@
+---
+complexity:
+  LongMethod:
+    excludes:
+      - '**/static/**'
+
+style:
+  MagicNumber:
+    excludes:
+      - '**/Style.kt'
