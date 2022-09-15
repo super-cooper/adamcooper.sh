@@ -115,3 +115,6 @@ hs_err_pid*
 
 # JavaScript resources
 kotlin-js-store/
+
+# GitHub Actions
+.secrets
