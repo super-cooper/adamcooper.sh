@@ -3,6 +3,7 @@ package sh.adamcooper.static
 import kotlinx.html.HTML
 import kotlinx.html.a
 import kotlinx.html.body
+import kotlinx.html.br
 import kotlinx.html.div
 import kotlinx.html.h3
 import kotlinx.html.head
@@ -106,15 +107,24 @@ fun HTML.opinions() {
             }
             div(classes = "answer") {
                 +"""
-                    I enjoy writing in Python the most, since it's very simple and can 
-                    be written as either a program or a script. Also I find writing code
-                    "pythonically" lends itself to being very elegant. Python has a 
-                    number of language features that I enjoy very much, and use 
-                    liberally, such as list comprehensions and decorators. I also like 
-                    that it is a true multi-paradigm language that takes full 
-                    advantage of imperative, object-oriented, and functional 
-                    philosophies. What I don't like about Python is that it is 
-                    interpreted, duck-typed, and runs on a single thread.
+                    I enjoy writing in Kotlin the most. It's a statically typed language that is
+                    very opinionated about safety and idiomatic programming. Kotlin is such a 
+                    beautiful language that it brings tears to my eyes. It's like someone looked at
+                    all of the annoying shortcomings of all the popular programming languages and 
+                    then made a new one which addressed them. And its multiplatform support means
+                    that I don't have to write JavaScript. Who could ask for anything more? Kotlin 
+                    is still a relatively young language, so there are some things to improve, such
+                    as standard library support and feature parity among all the supported 
+                    platforms. One thing I'd love to see added to Kotlin is namespaces. It's one of
+                    the greatest language features I've used, and a disappointingly low number of 
+                    languages support it. You could technically use packages or singleton objects
+                    as a way of namespacing, but it seems that it is recommended not to do it.
+                """.trimIndent()
+                br { }
+                +"""
+                    For scripting, I like to use Python. I find it to have a very elegant way of 
+                    consuming and processing data, plus I enjoy the process of writing imperative 
+                    code in a "pythonic" way.
                 """.trimIndent()
             }
 
@@ -122,7 +132,7 @@ fun HTML.opinions() {
                 +"> What language do you dislike the most?"
             }
             div(classes = "answer") {
-                +"All of them, including Python."
+                +"All of them."
             }
 
             div(classes = "question") {
@@ -131,6 +141,12 @@ fun HTML.opinions() {
             div(classes = "answer") {
                 +"For most everyday things like web browsing, programming, answering "
                 +"emails, what have you, I use "
+                a(href = "https://manjaro.org", target = "_blank") {
+                    +"Manjaro GNU/Linux"
+                }
+                +". It's a nifty distro, which provides more freedom than Ubuntu, and also is "
+                +"based on Arch, which means I get to use the Arch wiki. For my personal servers, "
+                +"I use "
                 a(href = "https://www.debian.org", target = "_blank") {
                     +"Debian GNU/Linux"
                 }
@@ -149,8 +165,7 @@ fun HTML.opinions() {
                 a(href = "https://www.microsoft.com/en-us/windows", target = "_blank") {
                     +"Windows 10"
                 }
-                +" that I use mainly for playing video games, making music, and "
-                +"watching Netflix."
+                +" that I use mainly for playing video games and making music."
             }
 
             div(classes = "question") {
