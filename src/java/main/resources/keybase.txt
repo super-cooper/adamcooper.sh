@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/supercooper
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://adamcooper.sh
+  * I am supercooper (https://keybase.io/supercooper) on keybase.
+  * I have a public key ASAfClWiU-CHT8rm-zH2lJp2mtHvJTdE_gNIr8alWxHpTAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01201f0a55a253e0874fcae6fb31f6949a769ad1ef253744fe0348afc6a55b11e94c0a",
+      "host": "keybase.io",
+      "kid": "01201f0a55a253e0874fcae6fb31f6949a769ad1ef253744fe0348afc6a55b11e94c0a",
+      "uid": "199d7f78b6161fe97fbc9d3a5b6f4119",
+      "username": "supercooper"
+    },
+    "merkle_root": {
+      "ctime": 1626148661,
+      "hash": "6d68e20ac214e0eb4f025312e29ccc749a7e78c5bb2312ad650a8233b01c6ed5dfacb3e4c4d2449dbb1caa5dd7d5d9694afd6eb7d0718ce3b6ab87fab0e07a28",
+      "hash_meta": "61bc52dc60067a9e4b90a5777261bab4343ef98dc6c5514d97c28c11bd167dc2",
+      "seqno": 20365047
+    },
+    "service": {
+      "entropy": "rFyd4ShbHxXULlcr90j+csYZ",
+      "hostname": "adamcooper.sh",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.6.1"
+  },
+  "ctime": 1626148677,
+  "expire_in": 504576000,
+  "prev": "f3a9b6d8b461ef125b6838030083d20b308f736efd49ba269b4a09f1a8183e03",
+  "seqno": 17,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgHwpVolPgh0/K5vsx9pSadprR7yU3RP4DSK/GpVsR6UwKp3BheWxvYWTESpcCEcQg86m22LRh7xJbaDgDAIPSCzCPc279Sbomm0oJ8agYPgPEIDwvEInLtYtldfg76kN2e5esXjQeCmAksngJ+TU1ZM6MAgHCo3NpZ8RAM97PvymVm2eP0gAETfbFMpSKWtA0a8V6A0exS2//FdLnDvpHxRQi1CzX5Lq9zdscGirvieMJ1LuxpnX8jd5lBqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIIuTKXcXxJoKLGh/dt47yi5BLUvCNd/tmokAzTEZ+iugo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/supercooper
+
+==================================================================

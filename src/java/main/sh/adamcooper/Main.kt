@@ -7,6 +7,7 @@ import io.ktor.server.application.log
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.html.respondHtml
+import io.ktor.server.http.content.resource
 import io.ktor.server.http.content.resources
 import io.ktor.server.http.content.static
 import io.ktor.server.plugins.callloging.CallLogging
@@ -50,6 +51,7 @@ fun main() {
                     resources("img")
                 }
             }
+            resource("keybase.txt")
         }
     }.start(wait = true)
 }
