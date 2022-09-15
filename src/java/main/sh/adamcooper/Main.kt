@@ -52,6 +52,7 @@ fun main() {
                 }
             }
             resource("keybase.txt")
+            resource("CNAME")
         }
     }.start(wait = true)
 }
