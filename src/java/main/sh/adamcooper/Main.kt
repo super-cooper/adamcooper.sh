@@ -26,7 +26,7 @@ fun main() {
     embeddedServer(CIO, port = 8080, host = "127.0.0.1") {
         install(CallLogging)
         routing {
-            trace { application.log.trace(it.buildText()) }
+            trace { this.application.log.trace(it.buildText()) }
             get("/") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::index)
             }
