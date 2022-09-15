@@ -57,7 +57,7 @@ kotlin {
             kotlin.srcDir("src/java/test")
         }
         val jsMain by getting {
-            resources.srcDir("src/java/main/resources")
+            resources.srcDir("src/js/main/resources")
             kotlin.srcDir("src/js/main")
         }
         val jsTest by getting {
