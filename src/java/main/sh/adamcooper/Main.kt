@@ -24,7 +24,7 @@ import sh.adamcooper.static.projects
 import sh.adamcooper.static.respondCss
 
 fun main() {
-    embeddedServer(CIO, port = 8080, host = "127.0.0.1") {
+    embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
         install(CallLogging)
         routing {
             trace { this.application.log.trace(it.buildText()) }
