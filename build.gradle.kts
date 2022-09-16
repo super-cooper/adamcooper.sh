@@ -79,6 +79,15 @@ tasks.named<Copy>("javaProcessResources") {
     from(jsBrowserDistribution)
 }
 
+tasks.named<Jar>("javaJar") {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    manifest {
+        attributes["Main-Class"] = application.mainClass
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    with(tasks.jar.get() as CopySpec)
+}
+
 tasks.named<JavaExec>("run") {
     dependsOn(tasks.named<Jar>("javaJar"))
     classpath(tasks.named<Jar>("javaJar"))
