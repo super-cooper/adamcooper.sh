@@ -8,6 +8,10 @@ on:
       - 'src/**/*.kt'
       - '**.kts'
   push:
+    paths:
+      - .github/workflows/ktlint.yml
+      - 'src/**/*.kt'
+      - '**.kts'
 
 jobs:
   ktlint:
