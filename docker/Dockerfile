@@ -8,7 +8,7 @@ COPY src/ src/
 
 RUN gradle --info jar
 
-FROM openjdk:8-slim as release
+FROM openjdk:18-slim as release
 
 WORKDIR /www
 
