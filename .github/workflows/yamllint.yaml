@@ -4,12 +4,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "*.yaml"
-      - "*.yml"
+      - "**.yaml"
+      - "**.yml"
   pull_request:
     paths:
-      - "*.yaml"
-      - "*.yml"
+      - "**.yaml"
+      - "**.yml"
 jobs:
   yamllint:
     name: 'Yamllint'
