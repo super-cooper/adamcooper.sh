@@ -9,6 +9,6 @@ updates:
   - package-ecosystem: "gradle"  # See documentation for possible values
     directory: "/"  # Location of package manifests
     schedule:
-      - day: saturday
-      - time: "08:00"
-      - timezone: "America/Chicago"
+      day: saturday
+      time: "08:00"
+      timezone: "America/Chicago"
