@@ -9,4 +9,6 @@ updates:
   - package-ecosystem: ""  # See documentation for possible values
     directory: "/"  # Location of package manifests
     schedule:
-      - cron: "0 7 * * SAT"
+      - day: saturday
+      - time: "08:00"
+      - timezone: "America/Chicago"
