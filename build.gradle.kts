@@ -50,7 +50,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.356")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
