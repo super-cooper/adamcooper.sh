@@ -14,4 +14,4 @@ WORKDIR /www
 
 COPY --from=build /build/build/libs/*.jar .
 
-ENTRYPOINT java -jar *.jar
+ENTRYPOINT ["java", "-jar", "*.jar"]
