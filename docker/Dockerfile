@@ -12,6 +12,6 @@ FROM openjdk:8-slim as release
 
 WORKDIR /www
 
-COPY --from=build /build/build/libs/*.jar .
+COPY --from=build /build/build/libs/*.jar server.jar
 
-ENTRYPOINT ["java", "-jar", "*.jar"]
+ENTRYPOINT ["java", "-jar", "server.jar"]
