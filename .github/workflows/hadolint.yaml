@@ -4,9 +4,17 @@ name: Hadolint
 on:
   push:
     branches: ["main"]
+    paths:
+      - "docker/**"
+      - ".hadolint.yaml"
+      - ".dockerignore"
   pull_request:
     # The branches below must be a subset of the branches above
     branches: ["main"]
+    paths:
+      - "docker/**"
+      - ".hadolint.yaml"
+      - ".dockerignore"
   schedule:
     - cron: '0 13 * * 6'
 

@@ -4,9 +4,21 @@ name: Docker
 on:
   push:
     branches: ["main"]
+    paths:
+      - "docker/**"
+      - "src/**"
+      - "*.kts"
+      - "gradle.properties"
+      - "gradle/**"
+      - ".github/workflows/docker.yaml"
   pull_request:
     paths:
-      - docker/*
+      - "docker/**"
+      - "src/**"
+      - "*.kts"
+      - "gradle.properties"
+      - "gradle/**"
+      - ".github/workflows/docker.yaml"
   schedule:
     - cron: '0 12 * * 6'
 
