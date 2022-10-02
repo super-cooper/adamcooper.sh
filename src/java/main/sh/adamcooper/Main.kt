@@ -23,6 +23,9 @@ import sh.adamcooper.static.opinions
 import sh.adamcooper.static.projects
 import sh.adamcooper.static.respondCss
 
+/**
+ * Definition for the server
+ */
 fun main() {
     embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
         install(CallLogging)
