@@ -18,7 +18,7 @@ repositories {
 kotlin {
     jvm("java") {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.jvmTarget = "16"
         }
         withJava()
         testRuns["test"].executionTask.configure {
