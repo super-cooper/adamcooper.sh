@@ -1,0 +1,3 @@
+[submodule "src/java/main/sh/adamcooper/apps/wordle"]
+	path = src/java/main/sh/adamcooper/apps/wordle
+	url = https://github.com/super-cooper/wordle
