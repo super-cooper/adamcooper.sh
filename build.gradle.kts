@@ -55,6 +55,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
+
+                implementation(project(":apps:wordle"))
             }
         }
         val javaTest by getting {
