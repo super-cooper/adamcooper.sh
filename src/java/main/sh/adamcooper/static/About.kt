@@ -3,7 +3,6 @@ package sh.adamcooper.static
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
-import kotlinx.datetime.TimeZone
 import kotlinx.datetime.periodUntil
 import kotlinx.datetime.toInstant
 import kotlinx.html.HTML
@@ -18,17 +17,18 @@ import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.p
 import kotlinx.html.title
+import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
 
-internal val BIRTHDAY = LocalDateTime(
+private val BIRTHDAY = LocalDateTime(
     year = 1996,
     month = Month.OCTOBER,
     dayOfMonth = 8,
     hour = 0,
     minute = 9
-).toInstant(TimeZone.of("-4"))
+).toInstant(LOCAL_TIME_ZONE)
 
 fun HTML.about() {
-    val age = BIRTHDAY.periodUntil(Clock.System.now(), TimeZone.currentSystemDefault()).years
+    val age = BIRTHDAY.periodUntil(Clock.System.now(), LOCAL_TIME_ZONE).years
     head {
         meta(charset = "UTF-8")
         title("About Me - Adam Cooper")
@@ -55,7 +55,6 @@ fun HTML.about() {
         div(classes = "text") {
             p {
                 id = "aboutme"
-                // TODO make age generated instead of manually updated
                 +"""
                     I am Adam Cooper, a $age year old computer programmer from New Jersey. 
                     I program mostly in Kotlin and Python. In my free time, I like to work on 
