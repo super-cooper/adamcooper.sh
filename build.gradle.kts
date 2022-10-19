@@ -1,6 +1,7 @@
 val kotlinVersion: String by project
 val ktorVersion: String by project
 val logbackVersion: String by project
+val exposedVersion: String by project
 
 plugins {
     kotlin("multiplatform") version "1.7.20"
@@ -59,6 +60,11 @@ kotlin {
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
                 implementation(project(":apps:wordle"))
+                implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+                implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+                implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+                implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
+                implementation("mysql:mysql-connector-java:8.0.30")
             }
         }
         val javaTest by getting {
