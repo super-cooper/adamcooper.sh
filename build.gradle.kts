@@ -2,6 +2,7 @@ val kotlinVersion: String by project
 val ktorVersion: String by project
 val logbackVersion: String by project
 val exposedVersion: String by project
+val kotlinxCSSVersion = "1.0.0-pre.407"
 
 plugins {
     kotlin("multiplatform") version "1.7.20"
@@ -54,7 +55,7 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.407")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinxCSSVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
@@ -73,6 +74,9 @@ kotlin {
         val jsMain by getting {
             resources.srcDir("src/js/main/resources")
             kotlin.srcDir("src/js/main")
+            dependencies {
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinxCSSVersion")
+            }
         }
         val jsTest by getting {
             kotlin.srcDir("src/js/test")

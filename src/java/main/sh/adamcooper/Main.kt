@@ -12,9 +12,11 @@ import io.ktor.server.http.content.resources
 import io.ktor.server.http.content.static
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.routing.get
+import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.css.CssBuilder
 import kotlinx.html.HTML
+import sh.adamcooper.apps.wordle.wordleApp
 import sh.adamcooper.static.about
 import sh.adamcooper.static.contact
 import sh.adamcooper.static.globalStyle
@@ -37,8 +39,13 @@ fun main() {
             get("/about") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::about)
             }
-            get("/projects") {
-                this.call.respondHtml(HttpStatusCode.OK, HTML::projects)
+            route("/projects") {
+                get {
+                    this.call.respondHtml(HttpStatusCode.OK, HTML::projects)
+                }
+                get("/wordle") {
+                    this.call.respondHtml(HttpStatusCode.OK, HTML::wordleApp)
+                }
             }
             get("/opinions") {
                 this.call.respondHtml(HttpStatusCode.OK, HTML::opinions)
@@ -52,6 +59,10 @@ fun main() {
                 }
                 static("img") {
                     resources("img")
+                }
+                static("scripts") {
+                    resource("adamcooper-sh.js")
+                    resource("adamcooper-sh.js.map")
                 }
             }
             resource("keybase.txt")

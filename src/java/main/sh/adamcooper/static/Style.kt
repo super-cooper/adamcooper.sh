@@ -13,6 +13,7 @@ import kotlinx.css.FontWeight.Companion.bold
 import kotlinx.css.LinearDimension
 import kotlinx.css.Position
 import kotlinx.css.TextAlign
+import kotlinx.css.Visibility
 import kotlinx.css.WordWrap
 import kotlinx.css.a
 import kotlinx.css.animationDuration
@@ -26,13 +27,17 @@ import kotlinx.css.borderColor
 import kotlinx.css.borderRadius
 import kotlinx.css.borderStyle
 import kotlinx.css.borderWidth
+import kotlinx.css.boxShadow
+import kotlinx.css.button
 import kotlinx.css.color
 import kotlinx.css.display
+import kotlinx.css.em
 import kotlinx.css.float
 import kotlinx.css.fontFamily
 import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
+import kotlinx.css.height
 import kotlinx.css.lineHeight
 import kotlinx.css.margin
 import kotlinx.css.marginLeft
@@ -47,13 +52,18 @@ import kotlinx.css.paddingTop
 import kotlinx.css.pct
 import kotlinx.css.position
 import kotlinx.css.properties.Animations
+import kotlinx.css.properties.BoxShadows
 import kotlinx.css.properties.TextDecoration
+import kotlinx.css.properties.border
 import kotlinx.css.properties.lh
 import kotlinx.css.properties.s
+import kotlinx.css.properties.scale
+import kotlinx.css.properties.transform
 import kotlinx.css.px
 import kotlinx.css.textAlign
 import kotlinx.css.textDecoration
 import kotlinx.css.top
+import kotlinx.css.visibility
 import kotlinx.css.vw
 import kotlinx.css.width
 import kotlinx.css.wordWrap
@@ -79,6 +89,11 @@ fun CssBuilder.globalStyle() {
         textDecoration = TextDecoration.none
         color = COLOR_PLAIN_TEXT
         fontWeight = bold
+    }
+
+    button {
+        border(0.px, BorderStyle.none, COLOR_BACKGROUND)
+        boxShadow = BoxShadows.none
     }
 
     "::-webkit-scrollbar" {
@@ -246,5 +261,51 @@ fun CssBuilder.globalStyle() {
         width = 50.pct
         textAlign = TextAlign.center
         paddingTop = 15.pct
+    }
+
+    ".app h1" {
+        fontFamily = "'Roboto Thin', 'Roboto Light', sans-serif"
+        color = Color.white
+        textAlign = TextAlign.center
+        width = 100.pct
+        fontSize = 4.vw
+    }
+
+    ".appIntroduction" {
+        color = COLOR_PLAIN_TEXT
+        textAlign = TextAlign.center
+        paddingLeft = 10.pct
+        paddingRight = 10.pct
+    }
+
+    ".wordleTableContainer" {
+        paddingTop = 5.pct
+    }
+
+    ".wordleTable, .wordleTable tr, .wordleTable th, .wordleTable td" {
+        color = COLOR_PLAIN_TEXT
+        marginLeft = LinearDimension.auto
+        marginRight = LinearDimension.auto
+        border(1.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
+        textAlign = TextAlign.center
+    }
+
+    ".wordleTable th, .wordleTable td" {
+        paddingLeft = 2.em
+        paddingRight = 2.em
+    }
+
+    ".wordleCopyButtonContainer" {
+        width = 4.em
+        height = width
+    }
+
+    ".wordleCopyButton" {
+        color = COLOR_PLAIN_TEXT
+        backgroundColor = COLOR_BACKGROUND
+        marginLeft = LinearDimension.auto
+        marginRight = LinearDimension.auto
+        transform { scale(2) }
+        visibility = Visibility.hidden
     }
 }
