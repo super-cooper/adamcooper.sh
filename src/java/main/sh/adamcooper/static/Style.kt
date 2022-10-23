@@ -3,6 +3,7 @@ package sh.adamcooper.static
 import io.ktor.http.ContentType
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.response.respondText
+import kotlinx.css.Align
 import kotlinx.css.BorderStyle
 import kotlinx.css.Color
 import kotlinx.css.CssBuilder
@@ -18,6 +19,7 @@ import kotlinx.css.TextAlign
 import kotlinx.css.Visibility
 import kotlinx.css.WordWrap
 import kotlinx.css.a
+import kotlinx.css.alignSelf
 import kotlinx.css.animationDuration
 import kotlinx.css.animationName
 import kotlinx.css.backgroundColor
@@ -268,10 +270,13 @@ fun CssBuilder.globalStyle() {
         paddingTop = 15.pct
     }
 
+    ".app" {
+        textAlign = TextAlign.center
+    }
+
     ".app h1" {
         fontFamily = "'Roboto Thin', 'Roboto Light', sans-serif"
         color = Color.white
-        textAlign = TextAlign.center
         width = 100.pct
         fontSize = 4.vw
     }
@@ -281,6 +286,16 @@ fun CssBuilder.globalStyle() {
         textAlign = TextAlign.center
         paddingLeft = 10.pct
         paddingRight = 10.pct
+    }
+
+    ".appGitHubLink" {
+        alignSelf = Align.center
+    }
+
+    ".appGitHubLogo" {
+        width = 40.px
+        height = 40.px
+        alignSelf = Align.center
     }
 
     ".wordleTableContainer" {
