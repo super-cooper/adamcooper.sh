@@ -8,7 +8,7 @@ import kotlinx.datetime.todayIn
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.dao.id.IdTable
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.kotlin.datetime.date
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -24,22 +24,16 @@ internal object WordleDB {
 
     private val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, dayOfMonth = 19)
 
-    val solutions: Sequence<Solution>
-        get() = transaction(this.db) { Solution.all().toList().reversed() }.asSequence()
-
-    private val nextDate: LocalDate
-        get() = (this.solutions.mostRecent?.publishedOn ?: WORDLE_FIRST_DATE) + DatePeriod(days = 1)
-
-    val Sequence<Solution>.mostRecent: Solution?
-        get() = this.sortedByDescending(Solution::id).firstOrNull()
+    val solutions: List<Solution>
+        get() = transaction(this.db) { WordleDB.Solution.all().toList() }
 
     /**
      * Save the next Wordle solution to the database
      */
     @Suppress("MagicNumber")
-    fun saveSolution(guesses: List<String>, theAnswer: String): Solution = transaction(this.db) {
-        Solution.new {
-            publishedOn = WordleDB.nextDate
+    fun saveSolution(newID: Int, guesses: List<String>, theAnswer: String): Solution = transaction(this.db) {
+        Solution.new(newID) {
+            publishedOn = WORDLE_FIRST_DATE + DatePeriod(days = newID)
             solvedOn = Clock.System.todayIn(LOCAL_TIME_ZONE)
             answer = theAnswer
             guess1 = guesses[0]
@@ -54,7 +48,9 @@ internal object WordleDB {
     /**
      * The table for Wordle solutions
      */
-    private object Solutions : IntIdTable() {
+    private object Solutions : IdTable<Int>("solutions") {
+        override val id = integer("id").entityId()
+
         // The date on which the puzzle was originally published by Wordle
         val publishedOn = date("published_on").uniqueIndex()
 
@@ -75,6 +71,8 @@ internal object WordleDB {
         init {
             transaction(db) {
                 SchemaUtils.create(Solutions)
+                // Allow integer primary keys to be 0
+                this.exec("""SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";""")
             }
         }
     }
