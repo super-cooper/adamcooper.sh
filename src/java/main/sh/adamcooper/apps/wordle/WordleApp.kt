@@ -108,7 +108,8 @@ private fun TD.wordleFormatted(solution: WordleDB.Solution) {
 
 private fun wordleCopyText(solution: WordleDB.Solution): String = buildString {
     val guesses = wordleGuessSequence(solution)
-    appendLine("Wordle ${solution.id} ${guesses.count()}/6")
+    val count = solution.guess6?.let { if (it != solution.answer) "X" else null } ?: guesses.count().toString()
+    appendLine("Wordle ${solution.id} $count/6")
     appendLine()
     for (guess in guesses) {
         for (letter in WordleState.wordle.getResultOfGuess(guess, solution.answer)) {
