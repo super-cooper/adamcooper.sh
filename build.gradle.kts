@@ -60,12 +60,13 @@ kotlin {
                 implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
-                implementation(project(":apps:wordle"))
                 implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
                 implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
                 implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
                 implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
                 implementation("mysql:mysql-connector-java:8.0.30")
+
+                implementation("sh.adamcooper:wordle:1.0-SNAPSHOT")
             }
         }
         val javaTest by getting {

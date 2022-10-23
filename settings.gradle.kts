@@ -1,2 +1,2 @@
 rootProject.name = "adamcooper-sh"
-include(":apps:wordle")
+includeBuild("apps/wordle")
