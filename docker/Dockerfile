@@ -4,6 +4,7 @@ WORKDIR /build
 COPY gradle.properties ./
 COPY gradle/ gradle/
 COPY *.gradle.kts ./
+COPY apps/ apps/
 COPY src/ src/
 
 RUN gradle --info jar
