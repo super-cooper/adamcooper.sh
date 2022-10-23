@@ -1,6 +1,13 @@
 package sh.adamcooper.apps.wordle
 
 import io.ktor.http.LinkHeader
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
@@ -13,6 +20,7 @@ import kotlinx.html.LinkRel
 import kotlinx.html.LinkType
 import kotlinx.html.ScriptType
 import kotlinx.html.TABLE
+import kotlinx.html.TD
 import kotlinx.html.a
 import kotlinx.html.body
 import kotlinx.html.button
@@ -21,7 +29,6 @@ import kotlinx.html.h1
 import kotlinx.html.h3
 import kotlinx.html.head
 import kotlinx.html.header
-import kotlinx.html.id
 import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.noScript
@@ -31,10 +38,11 @@ import kotlinx.html.td
 import kotlinx.html.th
 import kotlinx.html.title
 import kotlinx.html.tr
-import sh.adamcooper.apps.wordle.WordleDB.mostRecent
 import sh.adamcooper.apps.wordle.WordleState.WORDLE_FIRST_DATE
 import sh.adamcooper.wordle.Wordle
 import kotlin.time.Duration.Companion.hours
+
+private const val WORDLE_BUFFER_CAPACITY = 1000
 
 /**
  * Manages the local state of Wordle solutions
@@ -53,21 +61,15 @@ private object WordleState {
             return field
         }
 
-    val solutions: Sequence<WordleDB.Solution>
-        get() {
-            return sequence {
-                val knownSolutions = WordleDB.solutions
-                val lastIndexSolved = knownSolutions.mostRecent?.id?.value ?: 0
-                for (index in WordleState.wordle.count downTo lastIndexSolved) {
-                    val answer = WordleState.wordle.answer(index)
-                    val guesses = WordleState.wordle.play(
-                        WordleState.wordle.bestWord,
-                        answer
-                    )
-                    this.yield(WordleDB.saveSolution(guesses, answer))
-                }
-                this.yieldAll(knownSolutions)
+    val solutions: Flow<WordleDB.Solution>
+        get() = flow {
+            val knownSolutions = WordleDB.solutions
+            for (id in WordleState.wordle.count downTo knownSolutions.count()) {
+                val answer = WordleState.wordle.answer(id)
+                val guesses = WordleState.wordle.play(WordleState.wordle.bestWord, answer)
+                emit(WordleDB.saveSolution(id, guesses, answer))
             }
+            emitAll(knownSolutions.asFlow())
         }
 }
 
@@ -80,30 +82,57 @@ internal fun H3.wordleDescription() {
     +"the correct answer."
 }
 
+private fun wordleGuessSequence(solution: WordleDB.Solution) = sequenceOf(
+    solution.guess1,
+    solution.guess2,
+    solution.guess3,
+    solution.guess4,
+    solution.guess5,
+    solution.guess6
+).filterNotNull()
+
+private fun TD.wordleFormatted(solution: WordleDB.Solution) {
+    for (guess in wordleGuessSequence(solution)) {
+        val results = WordleState.wordle.getResultOfGuess(guess, solution.answer)
+        div(classes = "wordleFormattedResultRow") {
+            results.zip(guess.asIterable()).forEach { (result, char) ->
+                when (result) {
+                    Wordle.Letter.GREEN -> div(classes = "wordleFormattedResultGreen") { +char.toString() }
+                    Wordle.Letter.YELLOW -> div(classes = "wordleFormattedResultYellow") { +char.toString() }
+                    else -> div(classes = "wordleFormattedResultBlack") { +char.toString() }
+                }
+            }
+        }
+    }
+}
+
+private fun wordleCopyText(solution: WordleDB.Solution): String = buildString {
+    val guesses = wordleGuessSequence(solution)
+    appendLine("Wordle ${solution.id} ${guesses.count()}/6")
+    appendLine()
+    for (guess in guesses) {
+        for (letter in WordleState.wordle.getResultOfGuess(guess, solution.answer)) {
+            when (letter) {
+                Wordle.Letter.GREEN -> append("🟩")
+                Wordle.Letter.YELLOW -> append("🟨")
+                Wordle.Letter.BLACK -> append("⬛")
+            }
+        }
+        appendLine()
+    }
+}.trim()
+
 private fun TABLE.wordleDisplay(solution: WordleDB.Solution) {
     val wordleNumber = solution.id.value
     tr {
         td { +wordleNumber.toString() }
         td { +(WORDLE_FIRST_DATE + DatePeriod(days = wordleNumber)).toString() }
         td { +solution.answer }
-        val solutionID = "solution-$wordleNumber"
-        td(classes = "wordleSolutionText") {
-            id = solutionID
-            +sequenceOf(
-                solution.guess1,
-                solution.guess2,
-                solution.guess3,
-                solution.guess4,
-                solution.guess5,
-                solution.guess6
-            ).takeWhile { it != null }.toList().toString()
-        }
-        td(classes = "wordleCopyButtonContainer") {
-            button(classes = "fa fa-copy wordleCopyButton", type = ButtonType.button) {
-                this.id = "wordleCopy-$wordleNumber"
-            }
-            noScript {
-                +"TODO this will be the text"
+        td { this.wordleFormatted(solution) }
+        td {
+            div(classes = "wordleResultsContainer") {
+                button(classes = "fa fa-copy wordleCopyButton", type = ButtonType.button)
+                noScript(classes = "wordleSolutionPlain") { +wordleCopyText(solution) }
             }
         }
     }
@@ -154,7 +183,10 @@ fun HTML.wordleApp() {
                         th { +"Solution" }
                         th { +"Copy" }
                     }
-                    WordleState.solutions.forEach(this::wordleDisplay)
+                    runBlocking {
+                        WordleState.solutions.buffer(WORDLE_BUFFER_CAPACITY).toList()
+                            .sortedByDescending(WordleDB.Solution::id).forEach(this@table::wordleDisplay)
+                    }
                 }
             }
         }

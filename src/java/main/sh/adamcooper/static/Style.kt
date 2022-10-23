@@ -7,9 +7,11 @@ import kotlinx.css.BorderStyle
 import kotlinx.css.Color
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.FlexDirection
 import kotlinx.css.Float
 import kotlinx.css.FontStyle
 import kotlinx.css.FontWeight.Companion.bold
+import kotlinx.css.JustifyContent
 import kotlinx.css.LinearDimension
 import kotlinx.css.Position
 import kotlinx.css.TextAlign
@@ -30,14 +32,17 @@ import kotlinx.css.borderWidth
 import kotlinx.css.boxShadow
 import kotlinx.css.button
 import kotlinx.css.color
+import kotlinx.css.columnGap
 import kotlinx.css.display
 import kotlinx.css.em
+import kotlinx.css.flexDirection
 import kotlinx.css.float
 import kotlinx.css.fontFamily
 import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
 import kotlinx.css.height
+import kotlinx.css.justifyContent
 import kotlinx.css.lineHeight
 import kotlinx.css.margin
 import kotlinx.css.marginLeft
@@ -307,5 +312,38 @@ fun CssBuilder.globalStyle() {
         marginRight = LinearDimension.auto
         transform { scale(2) }
         visibility = Visibility.hidden
+    }
+
+    ".wordleResultsContainer" {
+        display = Display.flex
+        flexDirection = FlexDirection.column
+        justifyContent = JustifyContent.spaceAround
+    }
+
+    ".wordleFormattedResultRow" {
+        display = Display.flex
+        flexDirection = FlexDirection.row
+        justifyContent = JustifyContent.spaceBetween
+        paddingTop = 3.px
+        paddingBottom = 3.px
+        columnGap = 3.px
+    }
+
+    ".wordleFormattedResultRow div" {
+        border(2.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
+        padding(5.px)
+        width = 12.px
+    }
+
+    ".wordleFormattedResultGreen" {
+        backgroundColor = Color.darkGreen
+    }
+
+    ".wordleFormattedResultYellow" {
+        backgroundColor = Color.darkGoldenrod
+    }
+
+    ".wordleFormattedResultBlack" {
+        backgroundColor = Color.darkSlateGray
     }
 }

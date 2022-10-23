@@ -6,7 +6,7 @@ import util.copyToClipboard
 
 fun main() {
     // Register Wordle copy buttons
-    val solutions = document.getElementsByClassName("wordleSolutionText")
+    val solutions = document.getElementsByClassName("wordleSolutionPlain")
     val copyButtons = document.getElementsByClassName("wordleCopyButton")
     solutions.asList().zip(copyButtons.asList()).forEach { (solutionElement, buttonElement) ->
         val button = buttonElement as HTMLButtonElement
