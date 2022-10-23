@@ -65,7 +65,7 @@ kotlin {
                 implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
                 implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
                 implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
-                implementation("mysql:mysql-connector-java:8.0.30")
+                implementation("mysql:mysql-connector-java:8.0.31")
             }
         }
         val javaTest by getting {
