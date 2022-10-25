@@ -1,6 +1,7 @@
 package sh.adamcooper.apps.wordle
 
 import io.ktor.http.LinkHeader
+import io.ktor.util.logging.KtorSimpleLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.buffer
@@ -50,11 +51,13 @@ private const val WORDLE_BUFFER_CAPACITY = 1000
 private object WordleState {
     val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, dayOfMonth = 19)
     private var lastWordListRefresh = Clock.System.now()
+    private val log = KtorSimpleLogger("WordleState")
 
     val wordle = Wordle()
         get() {
             if (this.lastWordListRefresh + 1.hours < Clock.System.now()) {
                 return Wordle().also {
+                    this.log.info("Refreshing Wordle state")
                     this.lastWordListRefresh = Clock.System.now()
                 }
             }
@@ -65,6 +68,7 @@ private object WordleState {
         get() = flow {
             val knownSolutions = WordleDB.solutions
             for (id in WordleState.wordle.count downTo knownSolutions.count()) {
+                WordleState.log.info("Solving new Wordle puzzle $id")
                 val answer = WordleState.wordle.answer(id)
                 val guesses = WordleState.wordle.play(WordleState.wordle.bestWord, answer)
                 emit(WordleDB.saveSolution(id, guesses, answer))
@@ -108,7 +112,8 @@ private fun TD.wordleFormatted(solution: WordleDB.Solution) {
 
 private fun wordleCopyText(solution: WordleDB.Solution): String = buildString {
     val guesses = wordleGuessSequence(solution)
-    appendLine("Wordle ${solution.id} ${guesses.count()}/6")
+    val count = solution.guess6?.let { if (it != solution.answer) "X" else null } ?: guesses.count().toString()
+    appendLine("Wordle ${solution.id} $count/6")
     appendLine()
     for (guess in guesses) {
         for (letter in WordleState.wordle.getResultOfGuess(guess, solution.answer)) {
