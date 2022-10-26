@@ -70,6 +70,7 @@ private object WordleState {
             for (id in WordleState.wordle.count downTo knownSolutions.count()) {
                 WordleState.log.info("Solving new Wordle puzzle $id")
                 val answer = WordleState.wordle.answer(id)
+                WordleState.log.info("Resolved Wordle answer $answer")
                 val guesses = WordleState.wordle.play(WordleState.wordle.bestWord, answer)
                 emit(WordleDB.saveSolution(id, guesses, answer))
             }
