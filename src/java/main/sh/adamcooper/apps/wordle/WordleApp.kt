@@ -53,16 +53,17 @@ private object WordleState {
     private var lastWordListRefresh = Clock.System.now()
     private val log = KtorSimpleLogger("WordleState")
 
-    val wordle = Wordle()
+    var wordle = Wordle()
         get() {
             if (this.lastWordListRefresh + 1.hours < Clock.System.now()) {
-                return Wordle().also {
+                field = Wordle().also {
                     this.log.info("Refreshing Wordle state")
                     this.lastWordListRefresh = Clock.System.now()
                 }
             }
             return field
         }
+        private set
 
     val solutions: Flow<WordleDB.Solution>
         get() = flow {
