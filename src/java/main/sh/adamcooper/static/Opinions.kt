@@ -150,18 +150,10 @@ fun HTML.opinions() {
                 a(href = "https://www.debian.org", target = "_blank") {
                     +"Debian GNU/Linux"
                 }
-                +". Specifically, I use the "
-                a(href = "https://wiki.debian.org/DebianTesting", target = "_blank") {
-                    +"testing branch"
-                }
                 +". I like that it gets almost all of the software support that "
                 a(href = "https://ubuntu.com", target = "_blank") { +"Ubuntu" }
-                +" gets with a higher degree of freedom. I also like that it's much "
-                +"more up to date than the "
-                a(href = "https://wiki.debian.org/DebianStable", target = "_blank") {
-                    +"stable branch"
-                }
-                +". I also have a computer that runs "
+                +" gets with a higher degree of freedom."
+                +"I also have a computer that runs "
                 a(href = "https://www.microsoft.com/en-us/windows", target = "_blank") {
                     +"Windows 10"
                 }
