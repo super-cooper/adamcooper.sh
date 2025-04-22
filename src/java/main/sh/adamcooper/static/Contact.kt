@@ -23,7 +23,7 @@ fun HTML.contact() {
         // Fonts
         link(
             href = "https://fonts.googleapis.com/css?family=Roboto&display=swap",
-            rel = "stylesheet"
+            rel = "stylesheet",
         )
     }
 
@@ -44,26 +44,25 @@ fun HTML.contact() {
                 +"Please feel free to contact me via email, or DM me on "
                 a(href = "https://twitter.com/_c00p", target = "_blank") { +"Twitter" }
                 +" or "
-                a(
-                    href = "https://www.linkedin.com/in/adamcooper-oc",
-                    target = "_blank"
-                ) {
+                a(href = "https://www.linkedin.com/in/adamcooper-oc", target = "_blank") {
                     +"LinkedIn"
                 }
                 +"."
-                br { }
-                br { }
+                br {}
+                br {}
                 +"""
                     My email is an image because of bots that scrape the internet for 
                     addresses to put on spam lists.
-                """.trimIndent()
-                br { }
-                br { }
+                """
+                    .trimIndent()
+                br {}
+                br {}
                 +"""
                     Feel free to contact me about questions, this website, just to 
                     chat, or anything really! Please, just don't try to sell me 
                     anything :)
-                """.trimIndent()
+                """
+                    .trimIndent()
             }
         }
         img(src = "/static/img/email.jpg") {

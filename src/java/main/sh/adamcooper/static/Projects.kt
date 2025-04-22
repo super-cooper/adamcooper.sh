@@ -24,7 +24,7 @@ fun HTML.projects() {
         // Fonts
         link(
             href = "https://fonts.googleapis.com/css?family=Roboto&display=swap",
-            rel = "stylesheet"
+            rel = "stylesheet",
         )
     }
 
@@ -45,21 +45,24 @@ fun HTML.projects() {
         }
 
         div(classes = "app") {
-            h1 {
-                a(href = "/projects/wordle") { +"Wordle Solver" }
-            }
-            a(href = "https://github.com/super-cooper/wordle", target = "_blank", classes = "appGitHubLink") {
-                img(src = "/static/img/social/github.svg", alt = "GitHub logo", classes = "appGitHubLogo")
+            h1 { a(href = "/projects/wordle") { +"Wordle Solver" } }
+            a(
+                href = "https://github.com/super-cooper/wordle",
+                target = "_blank",
+                classes = "appGitHubLink",
+            ) {
+                img(
+                    src = "/static/img/social/github.svg",
+                    alt = "GitHub logo",
+                    classes = "appGitHubLogo",
+                )
             }
             h3(classes = "appIntroduction") { wordleDescription() }
         }
 
         div(classes = "text") {
             id = "gh-repo-link"
-            a(
-                href = "https://github.com/super-cooper?tab=repositories",
-                target = "_blank"
-            ) {
+            a(href = "https://github.com/super-cooper?tab=repositories", target = "_blank") {
                 +"My GitHub Repositories"
             }
         }

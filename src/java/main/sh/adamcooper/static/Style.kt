@@ -103,25 +103,15 @@ fun CssBuilder.globalStyle() {
         boxShadow = BoxShadows.none
     }
 
-    "::-webkit-scrollbar" {
-        width = 8.px
-    }
+    "::-webkit-scrollbar" { width = 8.px }
 
-    "::-webkit-scrollbar-track" {
-        backgroundColor = COLOR_BACKGROUND
-    }
+    "::-webkit-scrollbar-track" { backgroundColor = COLOR_BACKGROUND }
 
-    "::-webkit-scrollbar-thumb" {
-        backgroundColor = Color("#222D32")
-    }
+    "::-webkit-scrollbar-thumb" { backgroundColor = Color("#222D32") }
 
-    "::-webkit-scrollbar-thumb:hover" {
-        backgroundColor = COLOR_BAR
-    }
+    "::-webkit-scrollbar-thumb:hover" { backgroundColor = COLOR_BAR }
 
-    ".navbar" {
-        padding = 0.toString()
-    }
+    ".navbar" { padding = 0.toString() }
 
     ".navbar header" {
         fontFamily = "'Roboto Medium', sans-serif"
@@ -158,9 +148,7 @@ fun CssBuilder.globalStyle() {
         color = COLOR_PLAIN_TEXT
     }
 
-    ".navbar a.selected:hover" {
-        animationName = Animations.none.toString()
-    }
+    ".navbar a.selected:hover" { animationName = Animations.none.toString() }
 
     ".navbar a:hover" {
         backgroundColor = COLOR_BACKGROUND
@@ -219,9 +207,7 @@ fun CssBuilder.globalStyle() {
         textAlign = TextAlign.justify
     }
 
-    ".text p#aboutme" {
-        margin = 80.px.value
-    }
+    ".text p#aboutme" { margin = 80.px.value }
 
     ".introduction h3" {
         paddingTop = 80.px
@@ -229,9 +215,7 @@ fun CssBuilder.globalStyle() {
         color = COLOR_PLAIN_TEXT
     }
 
-    "#q-and-a" {
-        margin = 80.px.value
-    }
+    "#q-and-a" { margin = 80.px.value }
 
     ".question" {
         color = COLOR_PLAIN_TEXT
@@ -270,9 +254,7 @@ fun CssBuilder.globalStyle() {
         paddingTop = 15.pct
     }
 
-    ".app" {
-        textAlign = TextAlign.center
-    }
+    ".app" { textAlign = TextAlign.center }
 
     ".app h1" {
         fontFamily = "'Roboto Thin', 'Roboto Light', sans-serif"
@@ -288,9 +270,7 @@ fun CssBuilder.globalStyle() {
         paddingRight = 10.pct
     }
 
-    ".appGitHubLink" {
-        alignSelf = Align.center
-    }
+    ".appGitHubLink" { alignSelf = Align.center }
 
     ".appGitHubLogo" {
         width = 40.px
@@ -298,9 +278,7 @@ fun CssBuilder.globalStyle() {
         alignSelf = Align.center
     }
 
-    ".wordleTableContainer" {
-        paddingTop = 5.pct
-    }
+    ".wordleTableContainer" { paddingTop = 5.pct }
 
     ".wordleTable, .wordleTable tr, .wordleTable th, .wordleTable td" {
         color = COLOR_PLAIN_TEXT
@@ -350,15 +328,9 @@ fun CssBuilder.globalStyle() {
         width = 12.px
     }
 
-    ".wordleFormattedResultGreen" {
-        backgroundColor = Color.darkGreen
-    }
+    ".wordleFormattedResultGreen" { backgroundColor = Color.darkGreen }
 
-    ".wordleFormattedResultYellow" {
-        backgroundColor = Color.darkGoldenrod
-    }
+    ".wordleFormattedResultYellow" { backgroundColor = Color.darkGoldenrod }
 
-    ".wordleFormattedResultBlack" {
-        backgroundColor = Color.darkSlateGray
-    }
+    ".wordleFormattedResultBlack" { backgroundColor = Color.darkSlateGray }
 }

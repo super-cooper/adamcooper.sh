@@ -16,9 +16,7 @@ import sh.adamcooper.infrastructure.DB
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
 import java.time.Month
 
-/**
- * Manages IO for the Wordle database
- */
+/** Manages IO for the Wordle database */
 internal object WordleDB {
     private val db = DB.connect("wordle")
 
@@ -27,27 +25,24 @@ internal object WordleDB {
     val solutions: List<Solution>
         get() = transaction(this.db) { WordleDB.Solution.all().toList() }
 
-    /**
-     * Save the next Wordle solution to the database
-     */
+    /** Save the next Wordle solution to the database */
     @Suppress("MagicNumber")
-    fun saveSolution(newID: Int, guesses: List<String>, theAnswer: String): Solution = transaction(this.db) {
-        Solution.new(newID) {
-            publishedOn = WORDLE_FIRST_DATE + DatePeriod(days = newID)
-            solvedOn = Clock.System.todayIn(LOCAL_TIME_ZONE)
-            answer = theAnswer
-            guess1 = guesses[0]
-            guess2 = guesses.getOrNull(1)
-            guess3 = guesses.getOrNull(2)
-            guess4 = guesses.getOrNull(3)
-            guess5 = guesses.getOrNull(4)
-            guess6 = guesses.getOrNull(5)
+    fun saveSolution(newID: Int, guesses: List<String>, theAnswer: String): Solution =
+        transaction(this.db) {
+            Solution.new(newID) {
+                publishedOn = WORDLE_FIRST_DATE + DatePeriod(days = newID)
+                solvedOn = Clock.System.todayIn(LOCAL_TIME_ZONE)
+                answer = theAnswer
+                guess1 = guesses[0]
+                guess2 = guesses.getOrNull(1)
+                guess3 = guesses.getOrNull(2)
+                guess4 = guesses.getOrNull(3)
+                guess5 = guesses.getOrNull(4)
+                guess6 = guesses.getOrNull(5)
+            }
         }
-    }
 
-    /**
-     * The table for Wordle solutions
-     */
+    /** The table for Wordle solutions */
     private object Solutions : IdTable<Int>("solutions") {
         override val id = integer("id").entityId()
 
@@ -77,9 +72,7 @@ internal object WordleDB {
         }
     }
 
-    /**
-     * Represents one row in the Solutions table
-     */
+    /** Represents one row in the Solutions table */
     internal class Solution(id: EntityID<Int>) : IntEntity(id) {
         companion object : IntEntityClass<Solution>(Solutions)
 
