@@ -1,5 +1,5 @@
 [versions]
-exposed = "0.39.2"
+exposed = "0.61.0"
 kotlin-css = "1.0.0-pre.412"
 kotlinx-datetime = "0.4.0"
 kotlinx-html = "0.8.0"

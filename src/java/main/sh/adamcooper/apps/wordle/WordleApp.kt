@@ -210,7 +210,7 @@ fun HTML.wordleApp() {
                         WordleState.solutions
                             .buffer(WORDLE_BUFFER_CAPACITY)
                             .toList()
-                            .sortedByDescending(WordleDB.Solution::id)
+                            .sortedByDescending { it.id.value }
                             .forEach(this@table::wordleDisplay)
                     }
                 }
