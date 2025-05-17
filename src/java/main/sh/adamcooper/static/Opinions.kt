@@ -95,25 +95,42 @@ fun HTML.opinions() {
             div(classes = "question") { +"> What language is your favorite?" }
             div(classes = "answer") {
                 +"""
-                    I enjoy writing in Kotlin the most. It's a statically typed language that is
-                    very opinionated about safety and idiomatic programming. Kotlin is such a 
-                    beautiful language that it brings tears to my eyes. It's like someone looked at
-                    all of the annoying shortcomings of all the popular programming languages and 
-                    then made a new one which addressed them. And its multiplatform support means
-                    that I don't have to write JavaScript. Who could ask for anything more? Kotlin 
-                    is still a relatively young language, so there are some things to improve, such
-                    as standard library support and feature parity among all the supported 
-                    platforms. One thing I'd love to see added to Kotlin is namespaces. It's one of
-                    the greatest language features I've used, and a disappointingly low number of 
-                    languages support it. You could technically use packages or singleton objects
-                    as a way of namespacing, but it seems that it is recommended not to do it.
+                    It depends on the project. I think different languages have different strengths,
+                    and should be used appropriately for the problems they're best at solving.
+                    """
+                    .trimIndent()
+                br {}
+                br {}
+                +"""
+                    For general applications, I'm a tremendous fan of Kotlin. I love its official
+                    libraries, its syntax, and its null safety. The multiplatform capabilities really
+                    drive it over the top as a top-tier end-to-end programming language. If I could improve
+                    Kotlin, I would make all exceptions checked and I would improve the clumsy namespacing.
+                    The "this@" syntax is ugly when overused, and the standard practice of referencing
+                    methods without "this" is confusing to read. Additionally, referencing by package is not
+                    considered best practice, and results in incredibly long names.
                 """
                     .trimIndent()
+                br {}
+                br {}
+                +"""
+                    For smaller, performance-sensitive, or low-level applications, I am absolutely in love
+                    with Rust. Rust basically answers the question of "what is everything wrong with C++"
+                    and fixes it. It forces you to write good code, which can be frustrating if you love
+                    writing bad code! For that reason, it's really only good for projects one intends
+                    to maintain long-term. Otherwise, it's not worth the effort to be such a perfectionist.
+                    If I could improve Rust, I would give it a stable ABI. If Rust wants to completely replace C/C++,
+                    it NEEDS to have a native solution to reliably load dynamic libraries.
+                """
+                    .trimIndent()
+                br {}
                 br {}
                 +"""
                     For scripting, I like to use Python. I find it to have a very elegant way of 
                     consuming and processing data, plus I enjoy the process of writing imperative 
-                    code in a "pythonic" way.
+                    code in a "pythonic" way. The standard library is execellent and perhaps contains 
+                    the most utility of any language's standard library. This makes writing quick scripts
+                    incredibly easy, as so many important utilities are already implemented for you.
                 """
                     .trimIndent()
             }
