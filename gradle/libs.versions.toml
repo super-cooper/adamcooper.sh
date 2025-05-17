@@ -1,0 +1,55 @@
+[versions]
+exposed = "0.39.2"
+kotlin-css = "1.0.0-pre.412"
+kotlinx-datetime = "0.4.0"
+kotlinx-html = "0.8.0"
+ktor = "2.0.3"
+logback = "1.3.0-beta0"
+mysql-connector = "8.0.31"
+
+[libraries]
+exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version.ref = "exposed" }
+exposed-dao = { group = "org.jetbrains.exposed", name = "exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed" }
+exposed-kotlin-datetime = { group = "org.jetbrains.exposed", name = "exposed-kotlin-datetime", version.ref = "exposed" }
+kotlin-css = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-css", version.ref = "kotlin-css" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
+ktor-server = { group = "io.ktor", name = "ktor-server-cio", version.ref = "ktor" }
+ktor-server-callLogging = { group = "io.ktor", name = "ktor-server-call-logging", version.ref = "ktor" }
+ktor-server-htmlBuilder = { group = "io.ktor", name = "ktor-server-html-builder-jvm", version.ref = "ktor" }
+logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+mysql-connector = { group = "mysql", name = "mysql-connector-java", version.ref = "mysql-connector" }
+wordle = { module = "sh.adamcooper:wordle", version = "1.0-SNAPSHOT" }
+
+[bundles]
+apps = [
+    "wordle",
+]
+db = [
+    "exposed-core",
+    "exposed-dao",
+    "exposed-jdbc",
+    "exposed-kotlin-datetime",
+    "mysql-connector",
+]
+logging = [
+    "ktor-server-callLogging",
+    "logback",
+]
+kotlin-datetime = [
+    "exposed-kotlin-datetime",
+    "kotlinx-datetime",
+]
+kotlin-web = [
+    "kotlin-css",
+    "kotlinx-html",
+]
+ktor-server = [
+    "ktor-server",
+    "ktor-server-callLogging",
+    "ktor-server-htmlBuilder",
+]
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.1.20" }

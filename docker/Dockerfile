@@ -1,4 +1,4 @@
-FROM gradle:jdk16 as build
+FROM gradle:jdk23 AS build
 
 WORKDIR /build
 COPY gradle.properties ./
@@ -9,7 +9,7 @@ COPY src/ src/
 
 RUN gradle --info jar
 
-FROM openjdk:16-slim as release
+FROM openjdk:23-slim AS release
 
 WORKDIR /www
 
