@@ -6,31 +6,31 @@
 
 version: 2
 updates:
-  - package-ecosystem: "gradle"  # See documentation for possible values
-    directory: "/"  # Location of package manifests
+  - package-ecosystem: "gradle"  
+    directory: "/"  
     schedule:
       interval: weekly
       day: saturday
       time: "08:00"
-      timezone: "America/Chicago"
+      timezone: "America/New_York"
   - package-ecosystem: "docker"
     directory: "/docker"
     schedule:
       interval: weekly
       day: saturday
       time: "08:00"
-      timezone: "America/Chicago"
+      timezone: "America/New_York"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: weekly
       day: saturday
       time: "08:00"
-      timezone: "America/Chicago"
+      timezone: "America/New_York"
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: weekly
       day: saturday
       time: "08:00"
-      timezone: "America/Chicago"
+      timezone: "America/New_York"
