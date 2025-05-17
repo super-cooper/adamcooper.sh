@@ -60,8 +60,23 @@ tasks.named<Copy>("javaProcessResources") {
 }
 
 tasks.named<Jar>("javaJar") {
+    // Include compiled JS in JAR
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
     dependsOn("jsProductionExecutableCompileSync")
+    manifest { attributes["Main-Class"] = "sh.adamcooper.MainKt" }
     from("${layout.buildDirectory}/js/packages/adamcooper-sh/kotlin") { into("static/js") }
+
+    // Include all runtime dependencies in the JAR
+    val javaMainCompilation = kotlin.targets["java"].compilations["main"]
+    from(javaMainCompilation.output)
+    dependsOn(javaMainCompilation.compileDependencyFiles)
+
+    // Include all dependencies in the JAR
+    from(
+        configurations.getByName("javaRuntimeClasspath").map {
+            if (it.isDirectory) it else zipTree(it)
+        }
+    )
 }
 
 tasks.named<JavaExec>("runJava") {
