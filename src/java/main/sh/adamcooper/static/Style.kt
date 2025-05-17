@@ -4,6 +4,7 @@ import io.ktor.http.ContentType
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.response.respondText
 import kotlinx.css.Align
+import kotlinx.css.Border
 import kotlinx.css.BorderStyle
 import kotlinx.css.Color
 import kotlinx.css.CssBuilder
@@ -14,16 +15,21 @@ import kotlinx.css.FontStyle
 import kotlinx.css.FontWeight.Companion.bold
 import kotlinx.css.JustifyContent
 import kotlinx.css.LinearDimension
+import kotlinx.css.Margin
+import kotlinx.css.OutlineStyle
+import kotlinx.css.Padding
 import kotlinx.css.Position
 import kotlinx.css.TextAlign
 import kotlinx.css.Visibility
 import kotlinx.css.WordWrap
 import kotlinx.css.a
 import kotlinx.css.alignSelf
+import kotlinx.css.animation
 import kotlinx.css.animationDuration
 import kotlinx.css.animationName
 import kotlinx.css.backgroundColor
 import kotlinx.css.body
+import kotlinx.css.border
 import kotlinx.css.borderBottomColor
 import kotlinx.css.borderBottomStyle
 import kotlinx.css.borderBottomWidth
@@ -50,6 +56,7 @@ import kotlinx.css.margin
 import kotlinx.css.marginLeft
 import kotlinx.css.marginRight
 import kotlinx.css.outlineColor
+import kotlinx.css.outlineStyle
 import kotlinx.css.outlineWidth
 import kotlinx.css.padding
 import kotlinx.css.paddingBottom
@@ -61,7 +68,6 @@ import kotlinx.css.position
 import kotlinx.css.properties.Animations
 import kotlinx.css.properties.BoxShadows
 import kotlinx.css.properties.TextDecoration
-import kotlinx.css.properties.border
 import kotlinx.css.properties.lh
 import kotlinx.css.properties.s
 import kotlinx.css.properties.scale
@@ -99,7 +105,7 @@ fun CssBuilder.globalStyle() {
     }
 
     button {
-        border(0.px, BorderStyle.none, COLOR_BACKGROUND)
+        border = Border(0.px, BorderStyle.none, COLOR_BACKGROUND)
         boxShadow = BoxShadows.none
     }
 
@@ -111,7 +117,7 @@ fun CssBuilder.globalStyle() {
 
     "::-webkit-scrollbar-thumb:hover" { backgroundColor = COLOR_BAR }
 
-    ".navbar" { padding = 0.toString() }
+    ".navbar" { padding = Padding(0.px) }
 
     ".navbar header" {
         fontFamily = "'Roboto Medium', sans-serif"
@@ -130,16 +136,16 @@ fun CssBuilder.globalStyle() {
         width = 20.pct
         color = COLOR_BAR
         outlineWidth = 1.px
-        put("outline-style", "solid")
+        outlineStyle = OutlineStyle.solid
         outlineColor = COLOR_OUTLINE
-        margin = (-2).px.value
-        padding = "15px 0"
+        margin = Margin((-2).px)
+        padding = Padding(vertical = 15.px, horizontal = 0.px)
         animationName = "navbar-hover-fade-out"
         animationDuration = .25.s
     }
 
     ".navbar a.selected" {
-        animationName = Animations.none.toString()
+        animation = Animations.none
         borderBottomColor = Color("#00BCD4")
         borderBottomWidth = 2.px
         borderBottomStyle = BorderStyle.solid
@@ -148,7 +154,7 @@ fun CssBuilder.globalStyle() {
         color = COLOR_PLAIN_TEXT
     }
 
-    ".navbar a.selected:hover" { animationName = Animations.none.toString() }
+    ".navbar a.selected:hover" { animation = Animations.none }
 
     ".navbar a:hover" {
         backgroundColor = COLOR_BACKGROUND
@@ -207,7 +213,7 @@ fun CssBuilder.globalStyle() {
         textAlign = TextAlign.justify
     }
 
-    ".text p#aboutme" { margin = 80.px.value }
+    ".text p#aboutme" { margin = Margin(80.px) }
 
     ".introduction h3" {
         paddingTop = 80.px
@@ -215,7 +221,7 @@ fun CssBuilder.globalStyle() {
         color = COLOR_PLAIN_TEXT
     }
 
-    "#q-and-a" { margin = 80.px.value }
+    "#q-and-a" { margin = Margin(80.px) }
 
     ".question" {
         color = COLOR_PLAIN_TEXT
@@ -223,7 +229,7 @@ fun CssBuilder.globalStyle() {
         fontFamily = "'Roboto Light', sans-serif"
         fontStyle = FontStyle.italic
         fontSize = 20.px
-        padding = 20.px.value
+        padding = Padding(20.px)
         borderWidth = 1.px
         borderColor = COLOR_OUTLINE
         borderStyle = BorderStyle.solid
@@ -236,7 +242,7 @@ fun CssBuilder.globalStyle() {
         paddingBottom = 20.px
         paddingLeft = 20.px
         fontSize = 16.px
-        put("font-align", "justify")
+        textAlign = TextAlign.justify
         lineHeight = 200.pct.lh
     }
 
@@ -248,7 +254,7 @@ fun CssBuilder.globalStyle() {
     }
 
     "#gh-repo-link" {
-        margin = LinearDimension.auto.value
+        margin = Margin(LinearDimension.auto)
         width = 50.pct
         textAlign = TextAlign.center
         paddingTop = 15.pct
@@ -284,7 +290,7 @@ fun CssBuilder.globalStyle() {
         color = COLOR_PLAIN_TEXT
         marginLeft = LinearDimension.auto
         marginRight = LinearDimension.auto
-        border(1.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
+        border = Border(1.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
         textAlign = TextAlign.center
     }
 
@@ -295,7 +301,7 @@ fun CssBuilder.globalStyle() {
 
     ".wordleCopyButtonContainer" {
         width = 4.em
-        height = width
+        height = 4.em
     }
 
     ".wordleCopyButton" {
@@ -323,8 +329,8 @@ fun CssBuilder.globalStyle() {
     }
 
     ".wordleFormattedResultRow div" {
-        border(2.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
-        padding(5.px)
+        border = Border(2.px, BorderStyle.solid, COLOR_PLAIN_TEXT)
+        padding = Padding(5.px)
         width = 12.px
     }
 
