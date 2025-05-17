@@ -1,4 +1,4 @@
-FROM gradle:jdk23 AS build
+FROM gradle:jdk23-graal AS build
 
 WORKDIR /build
 COPY gradle.properties ./
@@ -7,9 +7,9 @@ COPY *.gradle.kts ./
 COPY apps/ apps/
 COPY src/ src/
 
-RUN gradle --info jar
+RUN gradle --info javaJar
 
-FROM openjdk:23-slim AS release
+FROM container-registry.oracle.com/graalvm/native-image:23 AS release
 
 WORKDIR /www
 
