@@ -39,13 +39,18 @@ fun main() {
                 get("/contact") { this.call.respondHtml(HttpStatusCode.OK, HTML::contact) }
                 route("/static") {
                     get("style.css") { this.call.respondCss(CssBuilder::globalStyle) }
-                    staticResources("img", "img")
-                    staticResources("scripts", "scripts") {
-                        staticResources("adamcooper-sh.js", "scripts")
-                        staticResources("adamcooper-sh.js.map", "scripts")
-                    }
+                    staticResources("/", "static")
                 }
-                staticResources("", "") { staticResources("keybase.txt", "") }
+                staticResources("/", "text")
+//                staticResources("/img", "static.img")
+//                staticResources("/scripts", "static.scripts")
+                //                    staticResources("img", "img")
+                //                    staticResources("scripts", "scripts") {
+                //                        staticResources("adamcooper-sh.js", "scripts")
+                //                        staticResources("adamcooper-sh.js.map", "scripts")
+                //                    }
+                //                }
+                //                staticResources("", "") { staticResources("keybase.txt", "") }
             }
         }
         .start(wait = true)

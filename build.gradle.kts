@@ -34,7 +34,7 @@ kotlin {
         }
         val javaMain by getting {
             kotlin.srcDir("src/java/main")
-            resources.srcDir("src/java/main/resources")
+            resources.setSrcDirs(listOf("src/java/main/resources", tasks.named("jsBrowserDistribution")))
             dependencies {
                 implementation(libs.bundles.apps)
                 implementation(libs.bundles.db)
@@ -56,16 +56,15 @@ kotlin {
 
 tasks.named<Copy>("javaProcessResources") {
     val jsBrowserDistribution = tasks.named("jsBrowserDistribution")
-    from(jsBrowserDistribution)
+    from(jsBrowserDistribution) { into("/static/scripts") }
 }
 
 tasks.named<Jar>("javaJar") {
-    // Include compiled JS in JAR
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-    dependsOn("jsProductionExecutableCompileSync")
     manifest { attributes["Main-Class"] = "sh.adamcooper.MainKt" }
-    from("${layout.buildDirectory}/js/packages/adamcooper-sh/kotlin") { into("static/js") }
 
+    // Include compiled JS in JAR
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn("jsProductionExecutableCompileSync")
     // Include all runtime dependencies in the JAR
     val javaMainCompilation = kotlin.targets["java"].compilations["main"]
     from(javaMainCompilation.output)
