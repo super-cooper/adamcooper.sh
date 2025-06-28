@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
@@ -17,7 +16,7 @@ import kotlinx.datetime.Month
 import kotlinx.datetime.daysUntil
 import kotlinx.datetime.plus
 import kotlinx.datetime.toJavaLocalDate
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.todayIn
 import kotlinx.html.ButtonType
 import kotlinx.html.H3
 import kotlinx.html.HTML
@@ -46,19 +45,20 @@ import kotlinx.html.tr
 import sh.adamcooper.apps.wordle.WordleState.WORDLE_FIRST_DATE
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
 import sh.adamcooper.wordle.Wordle
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.hours
 
 private const val WORDLE_BUFFER_CAPACITY = 1000
 
 /** Manages the local state of Wordle solutions */
 private object WordleState {
-    val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, dayOfMonth = 19)
+    val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, day = 19)
     private var lastWordListRefresh = Clock.System.now()
     private val log = KtorSimpleLogger("WordleState")
 
     val count: Int
         get() {
-            val today = Clock.System.now().toLocalDateTime(LOCAL_TIME_ZONE).date
+            val today = Clock.System.todayIn(LOCAL_TIME_ZONE)
             return WORDLE_FIRST_DATE.daysUntil(today)
         }
 

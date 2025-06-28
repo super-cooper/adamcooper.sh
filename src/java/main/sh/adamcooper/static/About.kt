@@ -1,6 +1,5 @@
 package sh.adamcooper.static
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.periodUntil
@@ -18,9 +17,10 @@ import kotlinx.html.meta
 import kotlinx.html.p
 import kotlinx.html.title
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
+import kotlin.time.Clock
 
 private val BIRTHDAY =
-    LocalDateTime(year = 1996, month = Month.OCTOBER, dayOfMonth = 8, hour = 0, minute = 9)
+    LocalDateTime(year = 1996, month = Month.OCTOBER, day = 8, hour = 0, minute = 9)
         .toInstant(LOCAL_TIME_ZONE)
 
 fun HTML.about() {

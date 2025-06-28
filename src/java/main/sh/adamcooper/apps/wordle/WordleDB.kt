@@ -1,8 +1,8 @@
 package sh.adamcooper.apps.wordle
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.Month
 import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
 import org.jetbrains.exposed.dao.IntEntity
@@ -14,13 +14,13 @@ import org.jetbrains.exposed.sql.kotlin.datetime.date
 import org.jetbrains.exposed.sql.transactions.transaction
 import sh.adamcooper.infrastructure.DB
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
-import java.time.Month
+import kotlin.time.Clock
 
 /** Manages IO for the Wordle database */
 internal object WordleDB {
     private val db = DB.connect("wordle")
 
-    private val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, dayOfMonth = 19)
+    private val WORDLE_FIRST_DATE = LocalDate(year = 2021, month = Month.JUNE, day = 19)
 
     val solutions: List<Solution>
         get() = transaction(this.db) { WordleDB.Solution.all().toList() }

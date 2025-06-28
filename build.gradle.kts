@@ -15,7 +15,10 @@ repositories {
 kotlin {
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     jvm("java") {
-        compilerOptions { jvmTarget = JvmTarget.JVM_23 }
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_23
+            freeCompilerArgs.add("-opt-in=kotlin.time.ExperimentalTime")
+        }
         testRuns["test"].executionTask.configure { useJUnitPlatform() }
         binaries { executable { mainClass.set("sh.adamcooper.MainKt") } }
     }
