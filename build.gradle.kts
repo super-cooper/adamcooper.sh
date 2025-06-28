@@ -62,7 +62,7 @@ kotlin {
 
 spotless {
     kotlin {
-        ktfmt("0.51").kotlinlangStyle()
+        ktfmt("0.56").kotlinlangStyle()
     }
 }
 
