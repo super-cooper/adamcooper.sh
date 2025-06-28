@@ -1,4 +1,4 @@
-FROM gradle:jdk23-graal AS build
+FROM gradle:jdk24-graal AS build
 
 WORKDIR /build
 COPY gradle.properties ./
@@ -9,7 +9,7 @@ COPY src/ src/
 
 RUN gradle --info javaJar
 
-FROM container-registry.oracle.com/graalvm/native-image:23 AS release
+FROM container-registry.oracle.com/graalvm/native-image:24 AS release
 
 WORKDIR /www
 
