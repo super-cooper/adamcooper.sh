@@ -1,7 +1,10 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-plugins { alias(libs.plugins.kotlin.multiplatform) }
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.spotless)
+}
 
 group = "sh.adamcooper"
 
@@ -54,6 +57,12 @@ kotlin {
             dependencies { implementation(libs.kotlin.css) }
         }
         val jsTest by getting { kotlin.srcDir("src/js/test") }
+    }
+}
+
+spotless {
+    kotlin {
+        ktfmt("0.51").kotlinlangStyle()
     }
 }
 
