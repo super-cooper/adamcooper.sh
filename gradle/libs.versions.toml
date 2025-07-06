@@ -22,6 +22,7 @@ kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime",
 kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
 ktor-server = { group = "io.ktor", name = "ktor-server-cio", version.ref = "ktor" }
 ktor-server-callLogging = { group = "io.ktor", name = "ktor-server-call-logging", version.ref = "ktor" }
+ktor-server-config-yaml = { group = "io.ktor", name = "ktor-server-config-yaml", version.ref = "ktor" }
 ktor-server-htmlBuilder = { group = "io.ktor", name = "ktor-server-html-builder-jvm", version.ref = "ktor" }
 logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 mysql-connector = { group = "mysql", name = "mysql-connector-java", version.ref = "mysql-connector" }
@@ -59,6 +60,7 @@ kotlin-web = [
 ktor-server = [
     "ktor-server",
     "ktor-server-callLogging",
+    "ktor-server-config-yaml",
     "ktor-server-htmlBuilder",
 ]
 
