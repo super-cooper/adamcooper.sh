@@ -15,18 +15,20 @@ on:
       - "src/**"
       - ".github/workflows/build.yaml"
       - "gradle/**"
-      - "build.gradle.kts"
+      - "apps/**"
+      - "**.kt"
+      - "**.kts"
       - "gradle.properties"
-      - "settings.gradle.kts"
   pull_request:
     branches: ["main"]
     paths:
       - "src/**"
       - ".github/workflows/build.yaml"
       - "gradle/**"
-      - "build.gradle.kts"
+      - "apps/**"
+      - "**.kt"
+      - "**.kts"
       - "gradle.properties"
-      - "settings.gradle.kts"
 
 permissions:
   contents: read
