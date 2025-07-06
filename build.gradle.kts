@@ -45,6 +45,7 @@ kotlin {
                 implementation(libs.bundles.apps)
                 implementation(libs.bundles.db)
                 implementation(libs.bundles.logging)
+                implementation(libs.bundles.kotlin.coroutines)
                 implementation(libs.bundles.kotlin.datetime)
                 implementation(libs.bundles.kotlin.web)
                 implementation(libs.bundles.ktor.server)

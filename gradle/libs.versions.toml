@@ -1,7 +1,9 @@
 [versions]
 exposed = "0.61.0"
+jansi = "2.4.2"
 kotlin-css = "1.0.0-pre.860"
-kotlinx-datetime = "0.7.0"
+kotlinx-coroutines = "1.10.2"
+kotlinx-datetime = "0.7.0-0.6.x-compat"
 kotlinx-html = "0.12.0"
 ktor = "3.2.1"
 logback = "1.5.18"
@@ -12,7 +14,10 @@ exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version
 exposed-dao = { group = "org.jetbrains.exposed", name = "exposed-dao", version.ref = "exposed" }
 exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed" }
 exposed-kotlin-datetime = { group = "org.jetbrains.exposed", name = "exposed-kotlin-datetime", version.ref = "exposed" }
+jansi = { group = "org.fusesource.jansi", name = "jansi", version.ref = "jansi" }
 kotlin-css = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-css", version.ref = "kotlin-css" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-slf4j = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-slf4j", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
 ktor-server = { group = "io.ktor", name = "ktor-server-cio", version.ref = "ktor" }
@@ -34,8 +39,14 @@ db = [
     "mysql-connector",
 ]
 logging = [
+    "jansi",
     "ktor-server-callLogging",
+    "kotlinx-coroutines-slf4j",
     "logback",
+]
+kotlin-coroutines = [
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-slf4j",
 ]
 kotlin-datetime = [
     "exposed-kotlin-datetime",

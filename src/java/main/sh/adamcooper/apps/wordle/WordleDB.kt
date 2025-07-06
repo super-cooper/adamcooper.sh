@@ -1,5 +1,6 @@
 package sh.adamcooper.apps.wordle
 
+import kotlinx.datetime.Clock
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
@@ -14,7 +15,6 @@ import org.jetbrains.exposed.sql.kotlin.datetime.date
 import org.jetbrains.exposed.sql.transactions.transaction
 import sh.adamcooper.infrastructure.DB
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
-import kotlin.time.Clock
 
 /** Manages IO for the Wordle database */
 internal object WordleDB {
