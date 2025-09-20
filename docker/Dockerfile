@@ -9,7 +9,7 @@ COPY src/ src/
 
 RUN gradle --info javaJar
 
-FROM container-registry.oracle.com/graalvm/native-image:24 AS release
+FROM container-registry.oracle.com/graalvm/native-image:25 AS release
 
 WORKDIR /www
 
