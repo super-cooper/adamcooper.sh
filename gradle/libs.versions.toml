@@ -1,5 +1,5 @@
 [versions]
-exposed = "0.61.0"
+exposed = "1.0.0"
 jansi = "2.4.2"
 kotlin-css = "1.0.0-pre.860"
 kotlinx-coroutines = "1.10.2"

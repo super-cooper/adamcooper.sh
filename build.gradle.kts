@@ -19,7 +19,7 @@ kotlin {
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     jvm("java") {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_23
+            jvmTarget = JvmTarget.JVM_21
             freeCompilerArgs.add("-opt-in=kotlin.time.ExperimentalTime")
         }
         testRuns["test"].executionTask.configure { useJUnitPlatform() }
