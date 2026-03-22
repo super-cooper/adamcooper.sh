@@ -7,7 +7,7 @@ import org.jetbrains.exposed.v1.jdbc.Database
 object DB {
     private val host = System.getenv("DB_HOST") ?: "localhost"
     private val port = System.getenv("DB_PORT")?.toUInt() ?: 3306u
-    private const val driver = "com.mariadb.jdbc.Driver"
+    private const val driver = "org.mariadb.jdbc.Driver"
     private val user = System.getenv("DB_USER") ?: "web"
     private val password = System.getenv("DB_PASSWORD")!!
 
