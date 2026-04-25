@@ -65,5 +65,5 @@ ktor-server = [
 ]
 
 [plugins]
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.3.20" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.3.21" }
 spotless = { id = "com.diffplug.spotless", version = "8.4.0" }
