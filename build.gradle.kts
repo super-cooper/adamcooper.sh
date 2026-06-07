@@ -42,7 +42,6 @@ kotlin {
             kotlin.srcDir("src/java/main")
             resources.setSrcDirs(listOf("src/java/main/resources", tasks.named("jsBrowserDistribution")))
             dependencies {
-                implementation(libs.bundles.apps)
                 implementation(libs.bundles.db)
                 implementation(libs.bundles.logging)
                 implementation(libs.bundles.kotlin.coroutines)

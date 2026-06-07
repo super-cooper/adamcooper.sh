@@ -44,7 +44,7 @@ import kotlinx.html.title
 import kotlinx.html.tr
 import sh.adamcooper.apps.wordle.WordleState.WORDLE_FIRST_DATE
 import sh.adamcooper.infrastructure.LOCAL_TIME_ZONE
-import sh.adamcooper.wordle.Wordle
+import sh.adamcooper.apps.wordle.Wordle
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.hours
 

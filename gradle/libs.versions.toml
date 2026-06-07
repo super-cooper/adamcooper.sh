@@ -29,9 +29,6 @@ mariadb-client = { group = "org.mariadb.jdbc", name = "mariadb-java-client", ver
 wordle = { module = "sh.adamcooper:wordle", version = "1.0-SNAPSHOT" }
 
 [bundles]
-apps = [
-    "wordle",
-]
 db = [
     "exposed-core",
     "exposed-dao",

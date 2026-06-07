@@ -1,4 +1,0 @@
-[submodule "apps/wordle"]
-	path = apps/wordle
-	url = https://github.com/super-cooper/wordle
-	branch = master
