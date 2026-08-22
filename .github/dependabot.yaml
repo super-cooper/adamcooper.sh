@@ -8,6 +8,11 @@ updates:
       day: saturday
       time: "08:00"
       timezone: "America/New_York"
+    cooldown:
+      default-days: 30
+      semver-major-days: 30
+      semver-minor-days: 30
+      semver-patch-days: 14
   - package-ecosystem: "docker"
     directory: "/docker"
     schedule:
@@ -15,6 +20,8 @@ updates:
       day: saturday
       time: "08:00"
       timezone: "America/New_York"
+    cooldown:
+      default-days: 30
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -22,3 +29,5 @@ updates:
       day: saturday
       time: "08:00"
       timezone: "America/New_York"
+    cooldown:
+      default-days: 30
