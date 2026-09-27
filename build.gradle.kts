@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
 }
 
 group = "sh.adamcooper"
@@ -64,6 +65,25 @@ spotless {
     kotlin {
         ktfmt("0.56").kotlinlangStyle()
     }
+}
+
+detekt {
+    config.setFrom("$projectDir/detekt.yml")
+}
+
+tasks.register("detektAll") {
+    group = "verification"
+    description = "Runs detekt across all source sets, with type resolution where available"
+    dependsOn(
+        "detektMainJava",
+        "detektTestJava",
+        "detektCommonMainSourceSet",
+        "detektCommonTestSourceSet",
+        "detektJsMainSourceSet",
+        "detektJsTestSourceSet",
+        "detektWebMainSourceSet",
+        "detektWebTestSourceSet",
+    )
 }
 
 tasks.named<Copy>("javaProcessResources") {

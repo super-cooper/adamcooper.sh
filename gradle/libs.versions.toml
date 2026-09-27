@@ -30,37 +30,38 @@ wordle = { module = "sh.adamcooper:wordle", version = "1.0-SNAPSHOT" }
 
 [bundles]
 db = [
-    "exposed-core",
-    "exposed-dao",
-    "exposed-jdbc",
-    "exposed-kotlin-datetime",
-    "mariadb-client",
+  "exposed-core",
+  "exposed-dao",
+  "exposed-jdbc",
+  "exposed-kotlin-datetime",
+  "mariadb-client",
 ]
 logging = [
-    "jansi",
-    "ktor-server-callLogging",
-    "kotlinx-coroutines-slf4j",
-    "logback",
+  "jansi",
+  "ktor-server-callLogging",
+  "kotlinx-coroutines-slf4j",
+  "logback",
 ]
 kotlin-coroutines = [
-    "kotlinx-coroutines-core",
-    "kotlinx-coroutines-slf4j",
+  "kotlinx-coroutines-core",
+  "kotlinx-coroutines-slf4j",
 ]
 kotlin-datetime = [
-    "exposed-kotlin-datetime",
-    "kotlinx-datetime",
+  "exposed-kotlin-datetime",
+  "kotlinx-datetime",
 ]
 kotlin-web = [
-    "kotlin-css",
-    "kotlinx-html",
+  "kotlin-css",
+  "kotlinx-html",
 ]
 ktor-server = [
-    "ktor-server",
-    "ktor-server-callLogging",
-    "ktor-server-config-yaml",
-    "ktor-server-htmlBuilder",
+  "ktor-server",
+  "ktor-server-callLogging",
+  "ktor-server-config-yaml",
+  "ktor-server-htmlBuilder",
 ]
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.4.10" }
 spotless = { id = "com.diffplug.spotless", version = "8.10.2" }
+detekt = { id = "dev.detekt", version = "2.0.0-alpha.6" }
