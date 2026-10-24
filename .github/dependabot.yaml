@@ -13,6 +13,8 @@ updates:
       semver-major-days: 30
       semver-minor-days: 30
       semver-patch-days: 14
+    commit-message:
+      prefix: build(gradle)
   - package-ecosystem: "docker"
     directory: "/docker"
     schedule:
@@ -22,6 +24,8 @@ updates:
       timezone: "America/New_York"
     cooldown:
       default-days: 30
+    commit-message:
+      prefix: build(docker)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -31,3 +35,5 @@ updates:
       timezone: "America/New_York"
     cooldown:
       default-days: 30
+    commit-message:
+      prefix: ci(actions)
